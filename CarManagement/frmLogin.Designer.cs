@@ -113,6 +113,7 @@
             this.btnExit.Size = new System.Drawing.Size(27, 27);
             this.btnExit.TabIndex = 7;
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmLogin
             // 
