@@ -21,5 +21,10 @@ namespace CarManagement
         {
             MessageBox.Show("Login Button");
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hello");
+        }
     }
 }
