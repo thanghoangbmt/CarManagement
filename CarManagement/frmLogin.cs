@@ -19,7 +19,7 @@ namespace CarManagement
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e) 
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             string UserID = txtUserID.Text;
             string Password = txtPassword.Text;
@@ -47,8 +47,6 @@ namespace CarManagement
             {
                 MessageBox.Show("Username or Password is incorrect!");
             }
-
-            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -59,7 +57,7 @@ namespace CarManagement
             if (confirmResult == DialogResult.Yes)
             {
                 this.Dispose();
-            } 
+            }
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)

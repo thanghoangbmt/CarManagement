@@ -67,6 +67,12 @@
     <Compile Include="Car.cs">
       <DependentUpon>CarDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="CarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarControl.Designer.cs">
+      <DependentUpon>CarControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CarDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +132,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>CarDB.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CarControl.resx">
+      <DependentUpon>CarControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>

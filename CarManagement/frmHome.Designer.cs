@@ -39,6 +39,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.carControl1 = new CarManagement.CarControl();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -164,11 +165,20 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // carControl1
+            // 
+            this.carControl1.BackColor = System.Drawing.Color.White;
+            this.carControl1.Location = new System.Drawing.Point(163, 154);
+            this.carControl1.Name = "carControl1";
+            this.carControl1.Size = new System.Drawing.Size(892, 492);
+            this.carControl1.TabIndex = 3;
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 646);
+            this.Controls.Add(this.carControl1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -197,5 +207,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private CarControl carControl1;
     }
 }
