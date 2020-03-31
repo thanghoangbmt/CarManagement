@@ -78,14 +78,17 @@
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(184, 27);
             this.txtUserID.TabIndex = 4;
+            this.txtUserID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserID_KeyDown);
             // 
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtPassword.Location = new System.Drawing.Point(110, 192);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(184, 27);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // btnLogin
             // 
@@ -134,6 +137,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
