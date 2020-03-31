@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtUserID = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -70,14 +70,14 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Password";
             // 
-            // txtUsername
+            // txtUserID
             // 
-            this.txtUsername.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtUsername.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtUsername.Location = new System.Drawing.Point(110, 141);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(184, 27);
-            this.txtUsername.TabIndex = 4;
+            this.txtUserID.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtUserID.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtUserID.Location = new System.Drawing.Point(110, 141);
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(184, 27);
+            this.txtUserID.TabIndex = 4;
             // 
             // txtPassword
             // 
@@ -125,7 +125,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -143,7 +143,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnExit;

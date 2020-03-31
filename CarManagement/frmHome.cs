@@ -12,14 +12,22 @@ namespace CarManagement
 {
     public partial class frmHome : Form
     {
+        private Account account;
         public frmHome()
         {
             InitializeComponent();
         }
 
+        public frmHome(Account account) : this()
+        {
+            this.account = account;
+        }
+
+
         private void frmHome_Load(object sender, EventArgs e)
         {
-
+            
         }
+
     }
 }
