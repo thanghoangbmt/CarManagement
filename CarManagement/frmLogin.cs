@@ -17,6 +17,11 @@ namespace CarManagement
             InitializeComponent();
         }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Login Button");
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hello");
