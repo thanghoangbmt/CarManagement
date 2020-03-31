@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace CarManagement
 {
-    public partial class frmLogin : Form
+    public partial class frmHome : Form
     {
-        public frmLogin()
+        public frmHome()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e) 
+        private void frmHome_Load(object sender, EventArgs e)
         {
-            frmHome frmHome = new frmHome();
-            frmHome.Show();
-        }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hello");
         }
     }
 }
