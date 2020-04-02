@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataSource.daos;
+using DataSource.dtos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +14,7 @@ namespace CarManagement
 {
     public partial class frmLogin : Form
     {
-        private CarManagementEntities db = new CarManagementEntities();
-
+        AccountDAO accountDAO = new AccountDAO();
         public frmLogin()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace CarManagement
                 return;
             }
 
-            Account account = db.Accounts.FirstOrDefault(acc => acc.UserID == UserID && acc.Password == Password);
+            AccountDTO account = accountDAO.CheckLogin(UserID, Password);
             if (account != null)
             {
                 frmHome frmHome = new frmHome(account);
@@ -51,13 +52,7 @@ namespace CarManagement
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult confirmResult = MessageBox.Show("Do you want to exit program ???",
-                                     "Confirm Exit!!",
-                                     MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
-            {
-                this.Dispose();
-            }
+            closeApp();
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -70,7 +65,18 @@ namespace CarManagement
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            btnExit_Click(sender, e);
+            closeApp();
+        }
+
+        private void closeApp()
+        {
+            DialogResult confirmResult = MessageBox.Show("Do you want to exit program ???",
+                                     "Confirm Exit!!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                System.Environment.Exit(0);
+            }
         }
 
         private void txtUserID_KeyDown(object sender, KeyEventArgs e)
@@ -79,6 +85,11 @@ namespace CarManagement
             {
                 btnLogin.PerformClick();
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

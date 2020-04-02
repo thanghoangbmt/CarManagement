@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataSource.dtos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,13 @@ namespace CarManagement
 {
     public partial class frmHome : Form
     {
-        private Account account;
+        private AccountDTO account;
         public frmHome()
         {
             InitializeComponent();
         }
 
-        public frmHome(Account account) : this()
+        public frmHome(AccountDTO account) : this()
         {
             this.account = account;
         }
@@ -31,18 +32,23 @@ namespace CarManagement
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult confirmResult = MessageBox.Show("Do you want to exit program ???",
-                                     "Confirm Exit!!",
-                                     MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
-            {
-                this.Dispose();
-            }
+            closeApp();
         }
 
         private void frmHome_FormClosing(object sender, FormClosingEventArgs e)
         {
-            btnExit_Click(sender, e);
+            closeApp();
+        }
+
+        private void closeApp()
+        {
+            DialogResult confirmResult = MessageBox.Show("Do you want to exit program ???",
+                                 "Confirm Exit!!",
+                                 MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                System.Environment.Exit(0);
+            }
         }
 
         private void btnCar_Click(object sender, EventArgs e)

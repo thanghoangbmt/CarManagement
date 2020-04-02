@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity.Infrastructure;
 
 namespace CarManagement
 {
     public partial class CarControl : UserControl
     {
+
         public CarControl()
         {
             InitializeComponent();
@@ -19,7 +21,12 @@ namespace CarManagement
 
         private void CarControl_Load(object sender, EventArgs e)
         {
+            loadData();
+        }
 
+        private void loadData()
+        {
+            
         }
     }
 }

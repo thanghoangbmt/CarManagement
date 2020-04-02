@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnSide = new System.Windows.Forms.Panel();
             this.lbWelcome = new System.Windows.Forms.Label();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnInvoice = new System.Windows.Forms.Button();
@@ -42,7 +43,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnSide = new System.Windows.Forms.Panel();
+            this.carControl1 = new CarManagement.CarControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -64,6 +65,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(179, 646);
             this.panel1.TabIndex = 0;
+            // 
+            // pnSide
+            // 
+            this.pnSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.pnSide.Location = new System.Drawing.Point(0, 138);
+            this.pnSide.Name = "pnSide";
+            this.pnSide.Size = new System.Drawing.Size(10, 88);
+            this.pnSide.TabIndex = 3;
             // 
             // lbWelcome
             // 
@@ -233,19 +242,21 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pnSide
+            // carControl1
             // 
-            this.pnSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.pnSide.Location = new System.Drawing.Point(0, 138);
-            this.pnSide.Name = "pnSide";
-            this.pnSide.Size = new System.Drawing.Size(10, 88);
-            this.pnSide.TabIndex = 3;
+            this.carControl1.BackColor = System.Drawing.Color.White;
+            this.carControl1.Location = new System.Drawing.Point(179, 154);
+            this.carControl1.Name = "carControl1";
+            this.carControl1.Size = new System.Drawing.Size(895, 492);
+            this.carControl1.TabIndex = 3;
             // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1074, 646);
+            this.Controls.Add(this.carControl1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -281,5 +292,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Panel pnSide;
+        private CarControl carControl1;
     }
 }

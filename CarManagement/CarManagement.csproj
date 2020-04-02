@@ -55,59 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Account_Roles.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Account_Status.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Car.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="CarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CarControl.Designer.cs">
       <DependentUpon>CarControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CarDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CarDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CarDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CarDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CarDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Car_Categories.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Car_Fuels.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Car_Manufacturers.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Car_Status.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Car_Tranmissions.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Car_Types.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
@@ -121,17 +73,8 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoice.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Invoice_Details.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>CarDB.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CarControl.resx">
       <DependentUpon>CarControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,13 +94,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="CarDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CarDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="CarDB.edmx.diagram">
-      <DependentUpon>CarDB.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,19 +112,13 @@
     <None Include="Resources\Login_Image.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CarDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CarDB.edmx</DependentUpon>
-      <LastGenOutput>CarDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CarDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CarDB.edmx</DependentUpon>
-      <LastGenOutput>CarDB.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\DataSource\DataSource.csproj">
+      <Project>{183e82cc-dde2-4496-be0d-e51990883225}</Project>
+      <Name>DataSource</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
