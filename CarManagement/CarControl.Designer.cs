@@ -40,6 +40,7 @@
             this.dgvCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCars.Location = new System.Drawing.Point(87, 49);
             this.dgvCars.Name = "dgvCars";
+            this.dgvCars.ReadOnly = true;
             this.dgvCars.Size = new System.Drawing.Size(734, 359);
             this.dgvCars.TabIndex = 0;
             // 
@@ -55,6 +56,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add Car";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -68,6 +70,7 @@
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit Car";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -81,6 +84,7 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete Car";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // CarControl
             // 
@@ -92,7 +96,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvCars);
             this.Name = "CarControl";
-            this.Size = new System.Drawing.Size(892, 492);
+            this.Size = new System.Drawing.Size(895, 492);
             this.Load += new System.EventHandler(this.CarControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
             this.ResumeLayout(false);

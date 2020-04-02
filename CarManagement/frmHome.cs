@@ -1,4 +1,5 @@
-﻿using DataSource.dtos;
+﻿using DataSource.daos;
+using DataSource.dtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace CarManagement
         public frmHome(AccountDTO account) : this()
         {
             this.account = account;
+            this.carControl1.Hide();
         }
 
 
@@ -54,6 +56,7 @@ namespace CarManagement
 
         private void btnCar_Click(object sender, EventArgs e)
         {
+            carControl1.Show();
             pnSide.Height = btnCar.Height;
             pnSide.Top = btnCar.Top;
         }
