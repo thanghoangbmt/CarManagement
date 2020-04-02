@@ -12,7 +12,7 @@ namespace DataSource.dtos
         public string Model_Name { get; set; }
         public double Price { get; set; }
         public int Produced_Year { get; set; }
-        public System.DateTime Accquired_Date { get; set; }
+        public DateTime Accquired_Date { get; set; }
         public int Engine { get; set; }
         public int Quantity { get; set; }
         public string Manufacturer_Name { get; set; }

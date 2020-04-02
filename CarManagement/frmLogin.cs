@@ -22,7 +22,7 @@ namespace CarManagement
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string UserID = txtUserID.Text;
+            string UserID = txtUserID.Text.Trim();
             string Password = txtPassword.Text;
 
             if (string.IsNullOrEmpty(UserID))

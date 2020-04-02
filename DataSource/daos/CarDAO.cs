@@ -63,5 +63,57 @@ namespace DataSource.daos
             }
             return list;
         }
+
+        public bool AddNewCar(CarDTO carDTO)
+        {
+            bool result = false;
+            string SQL = "INSERT INTO Cars(Model_Name, Price, Produced_Year, Accquired_Date, " +
+                "Engine, Quantity, Manufacturer_ID, Tranmission_ID, Type_ID, Category_ID, Fuel_ID, Status_ID) " +
+                "VALUES(@Model_Name, @Price, @Produced_Year, @Accquired_Date, @Engine, @Quantity, " +
+                "@Manufacturer_ID, @Tranmission_ID, @Type_ID, @Category_ID, @Fuel_ID, @Status_ID)";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Model_Name", carDTO.Model_Name);
+            cmd.Parameters.AddWithValue("@Price", carDTO.Price);
+            cmd.Parameters.AddWithValue("@Produced_Year", carDTO.Produced_Year);
+            cmd.Parameters.AddWithValue("@Accquired_Date", System.DateTime.Now);
+            cmd.Parameters.AddWithValue("@Engine", carDTO.Engine);
+            cmd.Parameters.AddWithValue("@Quantity", carDTO.Quantity);
+
+            Car_ManufacturerDAO car_ManufacturerDAO = new Car_ManufacturerDAO();
+            int manuID = car_ManufacturerDAO.GetManufacturerIDByName(carDTO.Manufacturer_Name);
+            cmd.Parameters.AddWithValue("@Manufacturer_ID", manuID);
+
+            Car_TranmissionDAO car_TranmissionDAO = new Car_TranmissionDAO();
+            int tranID = car_TranmissionDAO.GetTranmissionIDByDescription(carDTO.Tranmission_Description);
+            cmd.Parameters.AddWithValue("@Tranmission_ID", tranID);
+
+            Car_TypeDAO car_TypeDAO = new Car_TypeDAO();
+            int typeID = car_TypeDAO.GetTypeIDByDescription(carDTO.Type_Description);
+            cmd.Parameters.AddWithValue("@Type_ID", typeID);
+
+            Car_CategoryDAO car_CategoryDAO = new Car_CategoryDAO();
+            int cateID = car_CategoryDAO.GetCategoryIDByDescription(carDTO.Category_Description);
+            cmd.Parameters.AddWithValue("@Category_ID", cateID);
+
+            Car_FuelsDAO car_FuelsDAO = new Car_FuelsDAO();
+            int fuelID = car_FuelsDAO.GetFuelIDByDescription(carDTO.Fuel_Description);
+            cmd.Parameters.AddWithValue("@Fuel_ID", fuelID);
+
+            cmd.Parameters.AddWithValue("@Status_ID", 1);
+
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                    cnn.Open();
+                result = cmd.ExecuteNonQuery() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
     }
 }

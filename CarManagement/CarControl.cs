@@ -15,14 +15,14 @@ namespace CarManagement
 {
     public partial class CarControl : UserControl
     {
-            CarDAO carDAO = new CarDAO();
+        CarDAO carDAO = new CarDAO();
 
         public CarControl()
         {
             InitializeComponent();
         }
 
-        private void CarControl_Load(object sender, EventArgs e)
+        public void CarControl_Load(object sender, EventArgs e)
         {
             loadData();
         }
@@ -35,7 +35,12 @@ namespace CarManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            frmAddNewCar frmAddNew = new frmAddNewCar();
+            DialogResult result = frmAddNew.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadData();
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

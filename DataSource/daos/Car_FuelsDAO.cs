@@ -1,4 +1,5 @@
-﻿using DataSource.utils;
+﻿using DataSource.dtos;
+using DataSource.utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -53,6 +54,38 @@ namespace DataSource.daos
                     if (rd.Read())
                     {
                         result = rd.GetString(0);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public List<Car_FuelsDTO> GetListFuel()
+        {
+            List<Car_FuelsDTO> result = null;
+            string SQL = "SELECT ID, Description FROM Car_Fuels";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (rd.Read())
+                    {
+                        if (result == null)
+                            result = new List<Car_FuelsDTO>();
+                        Car_FuelsDTO dto = new Car_FuelsDTO
+                        {
+                            ID = rd.GetInt32(0),
+                            Description = rd.GetString(1)
+                        };
+                        result.Add(dto);
                     }
                 }
             }
