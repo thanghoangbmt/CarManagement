@@ -45,7 +45,12 @@ namespace CarManagement
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            frmEditCar frmEditCar = new frmEditCar();
+            DialogResult result = frmEditCar.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                loadData();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
