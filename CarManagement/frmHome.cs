@@ -28,6 +28,7 @@ namespace CarManagement
         private void frmHome_Load(object sender, EventArgs e)
         {
             lbWelcome.Text = "Hi, " + account.Fullname;
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)

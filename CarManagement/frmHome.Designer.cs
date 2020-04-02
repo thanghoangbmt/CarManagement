@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.carControl1 = new CarManagement.CarControl();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -293,5 +294,6 @@
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Panel pnSide;
         private CarControl carControl1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
