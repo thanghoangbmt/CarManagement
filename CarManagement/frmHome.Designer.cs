@@ -43,11 +43,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.customerControl = new CarManagement.CustomerControl();
-            this.categoryControl = new CarManagement.CategoryControl();
-            this.carControl1 = new CarManagement.CarControl();
-            this.invoiceControl = new CarManagement.InvoiceControl();
+            this.carControl1 = new CarManagement.carControl();
+            this.manufacturerControl1 = new CarManagement.manufacturerControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -246,22 +243,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // customerControl
-            // 
-            this.customerControl.BackColor = System.Drawing.Color.White;
-            this.customerControl.Location = new System.Drawing.Point(179, 153);
-            this.customerControl.Name = "customerControl";
-            this.customerControl.Size = new System.Drawing.Size(895, 492);
-            this.customerControl.TabIndex = 5;
-            // 
-            // categoryControl
-            // 
-            this.categoryControl.BackColor = System.Drawing.Color.White;
-            this.categoryControl.Location = new System.Drawing.Point(179, 154);
-            this.categoryControl.Name = "categoryControl";
-            this.categoryControl.Size = new System.Drawing.Size(895, 492);
-            this.categoryControl.TabIndex = 4;
-            // 
             // carControl1
             // 
             this.carControl1.BackColor = System.Drawing.Color.White;
@@ -270,13 +251,13 @@
             this.carControl1.Size = new System.Drawing.Size(895, 492);
             this.carControl1.TabIndex = 3;
             // 
-            // invoiceControl
+            // manufacturerControl1
             // 
-            this.invoiceControl.BackColor = System.Drawing.Color.White;
-            this.invoiceControl.Location = new System.Drawing.Point(179, 153);
-            this.invoiceControl.Name = "invoiceControl";
-            this.invoiceControl.Size = new System.Drawing.Size(895, 492);
-            this.invoiceControl.TabIndex = 6;
+            this.manufacturerControl1.BackColor = System.Drawing.Color.White;
+            this.manufacturerControl1.Location = new System.Drawing.Point(179, 154);
+            this.manufacturerControl1.Name = "manufacturerControl1";
+            this.manufacturerControl1.Size = new System.Drawing.Size(895, 492);
+            this.manufacturerControl1.TabIndex = 4;
             // 
             // frmHome
             // 
@@ -284,9 +265,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1074, 646);
-            this.Controls.Add(this.invoiceControl);
-            this.Controls.Add(this.customerControl);
-            this.Controls.Add(this.categoryControl);
+            this.Controls.Add(this.manufacturerControl1);
             this.Controls.Add(this.carControl1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -323,10 +302,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Panel pnSide;
-        private CarControl carControl1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private CategoryControl categoryControl;
-        private CustomerControl customerControl;
-        private InvoiceControl invoiceControl;
+        private carControl carControl1;
+        private manufacturerControl manufacturerControl1;
     }
 }

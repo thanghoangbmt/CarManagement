@@ -12,25 +12,38 @@ using System.Windows.Forms;
 
 namespace CarManagement
 {
-    public partial class frmAddNewCar : Form
+    public partial class frmEditCar : Form
     {
-        public frmAddNewCar()
+        CarDTO car;
+        public frmEditCar()
         {
             InitializeComponent();
         }
 
-        private void frmAddNewCar_Load(object sender, EventArgs e)
+        public frmEditCar(CarDTO car) : this()
+        {
+            this.car = car;
+        }
+
+        private void frmEditCar_Load(object sender, EventArgs e)
         {
             loadData();
         }
 
         private void loadData()
         {
+            txtModel.Text = car.Model_Name;
+            txtEngine.Text = car.Engine.ToString();
+            txtPrice.Text = car.Price.ToString();
+            txtProduceYear.Text = car.Produced_Year.ToString();
+            txtQuantity.Text = car.Quantity.ToString();
+
             Car_ManufacturerDAO car_ManufacturerDAO = new Car_ManufacturerDAO();
             Car_CategoryDAO car_CategoryDAO = new Car_CategoryDAO();
             Car_FuelsDAO car_FuelsDAO = new Car_FuelsDAO();
             Car_TranmissionDAO car_TranmissionDAO = new Car_TranmissionDAO();
             Car_TypeDAO car_TypeDAO = new Car_TypeDAO();
+            Car_StatusDAO car_StatusDAO = new Car_StatusDAO();
 
             List<Car_ManufacturerDTO> car_ManufacturerDTOs = car_ManufacturerDAO.GetListManufacturer();
             cbManufacturer.Items.Clear();
@@ -38,7 +51,7 @@ namespace CarManagement
             {
                 cbManufacturer.Items.Add(manufacturerDTO.Name);
             }
-            cbManufacturer.SelectedIndex = 0;
+            cbManufacturer.SelectedItem = cbManufacturer.Items.OfType<String>().FirstOrDefault(x => x.Equals(car.Manufacturer_Name));
 
 
             List<Car_CategoryDTO> car_CategoryDTOs = car_CategoryDAO.GetListCategory();
@@ -47,7 +60,7 @@ namespace CarManagement
             {
                 cbCategory.Items.Add(categoryDTO.Description);
             }
-            cbCategory.SelectedIndex = 0;
+            cbCategory.SelectedItem = cbCategory.Items.OfType<String>().FirstOrDefault(x => x.Equals(car.Category_Description));
 
 
             List<Car_FuelsDTO> car_Fuels = car_FuelsDAO.GetListFuel();
@@ -56,7 +69,8 @@ namespace CarManagement
             {
                 cbFuel.Items.Add(fuelsDTO.Description);
             }
-            cbFuel.SelectedIndex = 0;
+            cbFuel.SelectedItem = cbFuel.Items.OfType<String>().FirstOrDefault(x => x.Equals(car.Fuel_Description));
+
 
 
             List<Car_TranmissionDTO> car_TranmissionDTOs = car_TranmissionDAO.GetListTranmission();
@@ -65,7 +79,8 @@ namespace CarManagement
             {
                 cbTranmission.Items.Add(tranmissionDTO.Description);
             }
-            cbTranmission.SelectedIndex = 0;
+            cbTranmission.SelectedItem = cbTranmission.Items.OfType<String>().FirstOrDefault(x => x.Equals(car.Tranmission_Description));
+
 
             List<Car_TypeDTO> car_TypeDTOs = car_TypeDAO.GetListType();
             cbType.Items.Clear();
@@ -73,7 +88,16 @@ namespace CarManagement
             {
                 cbType.Items.Add(typeDTO.Description);
             }
-            cbType.SelectedIndex = 0;
+            cbType.SelectedItem = cbType.Items.OfType<String>().FirstOrDefault(x => x.Equals(car.Type_Description));
+
+
+            List<Car_StatusDTO> car_StatusDTOs = car_StatusDAO.GetListStatus();
+            cbStatus.Items.Clear();
+            foreach (Car_StatusDTO statusDTO in car_StatusDTOs)
+            {
+                cbStatus.Items.Add(statusDTO.Description);
+            }
+            cbStatus.SelectedItem = cbStatus.Items.OfType<String>().FirstOrDefault(x => x.Equals(car.Status_Description));
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -88,6 +112,7 @@ namespace CarManagement
             string type = cbType.Text.Trim();
             string category = cbCategory.Text.Trim();
             string fuel = cbFuel.Text.Trim();
+            string status = cbStatus.Text.Trim();
 
             //Check null or empty
             if (string.IsNullOrEmpty(model))
@@ -150,6 +175,12 @@ namespace CarManagement
                 return;
             }
 
+            if (string.IsNullOrEmpty(status))
+            {
+                MessageBox.Show("Please input Status!");
+                return;
+            }
+
             int Price = -1;
             int ProducedYear = -1;
             int Engine = -1;
@@ -158,7 +189,8 @@ namespace CarManagement
             try
             {
                 Price = int.Parse(sPrice);
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Please input valid Price!");
                 return;
@@ -217,31 +249,41 @@ namespace CarManagement
                 MessageBox.Show("Quantity must be greater than 0!");
                 return;
             }
-            //End validation.
 
-            CarDTO carDTO = new CarDTO()
-            {
-                Model_Name = model,
-                Price = Price,
-                Produced_Year = ProducedYear,
-                Engine = Engine,
-                Quantity = Quantity,
-                Manufacturer_Name = manufacturer,
-                Tranmission_Description = tranmission,
-                Type_Description = type,
-                Category_Description = category,
-                Fuel_Description = fuel
-            };
+            //string model = txtModel.Text.Trim();
+            //string sPrice = txtPrice.Text.Trim();
+            //string sProducedYear = txtProduceYear.Text.Trim();
+            //string sEngine = txtEngine.Text.Trim();
+            //string sQuantity = txtQuantity.Text.Trim();
+            //string manufacturer = cbManufacturer.Text.Trim();
+            //string tranmission = cbTranmission.Text.Trim();
+            //string type = cbType.Text.Trim();
+            //string category = cbCategory.Text.Trim();
+            //string fuel = cbFuel.Text.Trim();
+            //string status = cbStatus.Text.Trim();
+
+            car.Model_Name = model;
+            car.Price = Price;
+            car.Produced_Year = ProducedYear;
+            car.Engine = Engine;
+            car.Quantity = Quantity;
+            car.Manufacturer_Name = manufacturer;
+            car.Tranmission_Description = tranmission;
+            car.Type_Description = type;
+            car.Category_Description = category;
+            car.Fuel_Description = fuel;
+            car.Status_Description = status;
 
             CarDAO carDAO = new CarDAO();
-            bool result = carDAO.AddNewCar(carDTO);
+            bool result = carDAO.UpdateCar(car);
+
             if (result)
             {
-                MessageBox.Show("Add new car successfully!");
-            } 
+                MessageBox.Show("Edit car successfully!");
+            }
             else
             {
-                MessageBox.Show("Add new car failed!");
+                MessageBox.Show("Edit car failed!");
             }
             this.DialogResult = DialogResult.OK;
         }
