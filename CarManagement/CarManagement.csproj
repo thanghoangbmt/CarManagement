@@ -44,6 +44,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,18 @@
     </Compile>
     <Compile Include="carControl.Designer.cs">
       <DependentUpon>carControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CategoryControl.Designer.cs">
+      <DependentUpon>CategoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerControl.Designer.cs">
+      <DependentUpon>CustomerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddNewCar.cs">
       <SubType>Form</SubType>
@@ -85,6 +98,18 @@
     <Compile Include="frmEditManufacturer.Designer.cs">
       <DependentUpon>frmEditManufacturer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddNewCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewCategory.Designer.cs">
+      <DependentUpon>frmAddNewCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditCategory.Designer.cs">
+      <DependentUpon>frmEditCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +122,24 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewInvoiceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewInvoiceDetails.Designer.cs">
+      <DependentUpon>frmViewInvoiceDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvoiceControl.Designer.cs">
+      <DependentUpon>InvoiceControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="manufacturerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +150,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="carControl.resx">
       <DependentUpon>carControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryControl.resx">
+      <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerControl.resx">
+      <DependentUpon>CustomerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewCar.resx">
       <DependentUpon>frmAddNewCar.cs</DependentUpon>
@@ -120,6 +169,12 @@
     <EmbeddedResource Include="frmEditManufacturer.resx">
       <DependentUpon>frmEditManufacturer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddNewCategory.resx">
+      <DependentUpon>frmAddNewCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditCategory.resx">
+      <DependentUpon>frmEditCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +183,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="manufacturerControl.resx">
       <DependentUpon>manufacturerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewInvoiceDetails.resx">
+      <DependentUpon>frmViewInvoiceDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceControl.resx">
+      <DependentUpon>InvoiceControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

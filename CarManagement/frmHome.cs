@@ -25,12 +25,16 @@ namespace CarManagement
             this.account = account;
             this.carControl1.Hide();
             this.manufacturerControl1.Hide();
+            this.categoryControl.Hide();
+            this.customerControl.Hide();
+            this.invoiceControl.Hide();
         }
 
 
         private void frmHome_Load(object sender, EventArgs e)
         {
             lbWelcome.Text = "Hi, " + account.Fullname;
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -61,12 +65,16 @@ namespace CarManagement
             carControl1.Show();
             carControl1.loadData();
             
+            carControl1.BringToFront();
             pnSide.Height = btnCar.Height;
             pnSide.Top = btnCar.Top;
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
+            categoryControl.Show();
+            categoryControl.LoadData();
+            categoryControl.BringToFront();
             pnSide.Height = btnCategory.Height;
             pnSide.Top = btnCategory.Top;
         }
@@ -84,12 +92,18 @@ namespace CarManagement
 
         private void btnInvoice_Click(object sender, EventArgs e)
         {
+            invoiceControl.Show();
+            invoiceControl.LoadData();
+            invoiceControl.BringToFront();
             pnSide.Height = btnInvoice.Height;
             pnSide.Top = btnInvoice.Top;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            customerControl.Show();
+            customerControl.LoadData();
+            customerControl.BringToFront();
             pnSide.Height = btnCustomer.Height;
             pnSide.Top = btnCustomer.Top;
         }
