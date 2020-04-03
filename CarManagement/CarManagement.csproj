@@ -55,11 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarControl.cs">
+    <Compile Include="carControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CarControl.Designer.cs">
-      <DependentUpon>CarControl.cs</DependentUpon>
+    <Compile Include="carControl.Designer.cs">
+      <DependentUpon>carControl.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddNewCar.cs">
       <SubType>Form</SubType>
@@ -67,11 +67,23 @@
     <Compile Include="frmAddNewCar.Designer.cs">
       <DependentUpon>frmAddNewCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddNewManufacturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewManufacturer.Designer.cs">
+      <DependentUpon>frmAddNewManufacturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditCar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEditCar.Designer.cs">
       <DependentUpon>frmEditCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditManufacturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditManufacturer.Designer.cs">
+      <DependentUpon>frmEditManufacturer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
@@ -85,22 +97,37 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="manufacturerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="manufacturerControl.Designer.cs">
+      <DependentUpon>manufacturerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CarControl.resx">
-      <DependentUpon>CarControl.cs</DependentUpon>
+    <EmbeddedResource Include="carControl.resx">
+      <DependentUpon>carControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewCar.resx">
       <DependentUpon>frmAddNewCar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddNewManufacturer.resx">
+      <DependentUpon>frmAddNewManufacturer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditCar.resx">
       <DependentUpon>frmEditCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditManufacturer.resx">
+      <DependentUpon>frmEditManufacturer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manufacturerControl.resx">
+      <DependentUpon>manufacturerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

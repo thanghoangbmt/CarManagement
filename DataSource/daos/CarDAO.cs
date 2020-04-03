@@ -113,6 +113,40 @@ namespace DataSource.daos
             {
                 throw new Exception(ex.Message);
             }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
+        }
+
+        public bool CheckUsingManufacturer(int manuID)
+        {
+            bool result = false;
+            string SQL = "SELECT ID FROM Cars WHERE Manufacturer_ID = @Manufacturer_ID ";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Manufacturer_ID", manuID);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    if (rd.HasRows)
+                    {
+                        result = true;
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             return result;
         }
 
@@ -167,6 +201,13 @@ namespace DataSource.daos
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
             }
             return result;
         }

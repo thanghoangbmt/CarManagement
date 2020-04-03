@@ -24,6 +24,7 @@ namespace CarManagement
         {
             this.account = account;
             this.carControl1.Hide();
+            this.manufacturerControl1.Hide();
         }
 
 
@@ -55,7 +56,11 @@ namespace CarManagement
 
         private void btnCar_Click(object sender, EventArgs e)
         {
+            manufacturerControl1.Hide();
+
             carControl1.Show();
+            carControl1.loadData();
+            
             pnSide.Height = btnCar.Height;
             pnSide.Top = btnCar.Top;
         }
@@ -68,6 +73,11 @@ namespace CarManagement
 
         private void btnManufacturer_Click(object sender, EventArgs e)
         {
+            carControl1.Hide();
+
+            manufacturerControl1.Show();
+            manufacturerControl1.loadData();
+
             pnSide.Height = btnManufacturer.Height;
             pnSide.Top = btnManufacturer.Top;
         }

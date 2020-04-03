@@ -43,7 +43,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.carControl1 = new CarManagement.CarControl();
+            this.carControl1 = new CarManagement.carControl();
+            this.manufacturerControl1 = new CarManagement.manufacturerControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -250,12 +251,21 @@
             this.carControl1.Size = new System.Drawing.Size(895, 492);
             this.carControl1.TabIndex = 3;
             // 
+            // manufacturerControl1
+            // 
+            this.manufacturerControl1.BackColor = System.Drawing.Color.White;
+            this.manufacturerControl1.Location = new System.Drawing.Point(179, 154);
+            this.manufacturerControl1.Name = "manufacturerControl1";
+            this.manufacturerControl1.Size = new System.Drawing.Size(895, 492);
+            this.manufacturerControl1.TabIndex = 4;
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1074, 646);
+            this.Controls.Add(this.manufacturerControl1);
             this.Controls.Add(this.carControl1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -292,6 +302,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Panel pnSide;
-        private CarControl carControl1;
+        private carControl carControl1;
+        private manufacturerControl manufacturerControl1;
     }
 }
