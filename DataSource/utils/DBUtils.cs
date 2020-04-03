@@ -11,7 +11,7 @@ namespace DataSource.utils
     {
         public static SqlConnection GetConnection()
         {
-            string strConnection = "server=.;database=CarManagement;uid=sa;pwd=1";
+            string strConnection = "server=.;database=CarManagement;uid=sa;pwd=gooner";
             SqlConnection cnn = new SqlConnection(strConnection);
             return cnn;
         }
