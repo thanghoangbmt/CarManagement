@@ -13,11 +13,11 @@ using DataSource.dtos;
 
 namespace CarManagement
 {
-    public partial class carControl : UserControl
+    public partial class CarControl : UserControl
     {
         CarDAO carDAO = new CarDAO();
 
-        public carControl()
+        public CarControl()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace CarManagement
             loadData();
         }
 
-        public void loadData()
+        private void loadData()
         {
             List<CarDTO> listCars = carDAO.GetListCar();
             dgvCars.DataSource = listCars;

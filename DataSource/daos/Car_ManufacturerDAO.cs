@@ -38,90 +38,6 @@ namespace DataSource.daos
             return result;
         }
 
-        public bool UpdateManufacturer(Car_ManufacturerDTO dto)
-        {
-            bool result = false;
-            string SQL = "UPDATE Car_Manufacturers SET Name = @Name WHERE ID = @ID";
-
-            SqlConnection cnn = DBUtils.GetConnection();
-            SqlCommand cmd = new SqlCommand(SQL, cnn);
-            cmd.Parameters.AddWithValue("@Name", dto.Name);
-            cmd.Parameters.AddWithValue("@ID", dto.ID);
-
-            try
-            {
-                if (cnn.State == ConnectionState.Closed)
-                    cnn.Open();
-                result = cmd.ExecuteNonQuery() > 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (cnn.State == ConnectionState.Open)
-                {
-                    cnn.Close();
-                }
-            }
-            return result;
-        }
-
-        public bool AddNewManufacturer(string manufacturer_Name)
-        {
-            bool result = false;
-            string SQL = "INSERT INTO Car_Manufacturers(Name) VALUES (@Name)";
-            SqlConnection cnn = DBUtils.GetConnection();
-            SqlCommand cmd = new SqlCommand(SQL, cnn);
-            cmd.Parameters.AddWithValue("@Name", manufacturer_Name);
-            try
-            {
-                if (cnn.State == ConnectionState.Closed)
-                    cnn.Open();
-                result = cmd.ExecuteNonQuery() > 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (cnn.State == ConnectionState.Open)
-                {
-                    cnn.Close();
-                }
-            }
-            return result;
-        }
-
-        public bool DeleteManufacturer(Car_ManufacturerDTO dto)
-        {
-            bool result = false;
-            string SQL = "DELETE Car_Manufacturers WHERE ID = @ID";
-            SqlConnection cnn = DBUtils.GetConnection();
-            SqlCommand cmd = new SqlCommand(SQL, cnn);
-            cmd.Parameters.AddWithValue("@ID", dto.ID);
-            try
-            {
-                if (cnn.State == ConnectionState.Closed)
-                    cnn.Open();
-                result = cmd.ExecuteNonQuery() > 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (cnn.State == ConnectionState.Open)
-                {
-                    cnn.Close();
-                }
-            }
-            return result;
-        }
-
         public string GetManufacturerNameByID(int ID)
         {
             string result = "";
@@ -170,36 +86,6 @@ namespace DataSource.daos
                             Name = rd.GetString(1)
                         };
                         result.Add(dto);
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return result;
-        }
-
-        public Car_ManufacturerDTO FindByName(string Name)
-        {
-            Car_ManufacturerDTO result = null;
-            string SQL = "SELECT ID, Name FROM Car_Manufacturers WHERE Name = @Name";
-            SqlConnection cnn = DBUtils.GetConnection();
-            SqlCommand cmd = new SqlCommand(SQL, cnn);
-            cmd.Parameters.AddWithValue("@Name", Name);
-            try
-            {
-                if (cnn.State == ConnectionState.Closed)
-                {
-                    cnn.Open();
-                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    if (rd.Read())
-                    {
-                        result = new Car_ManufacturerDTO
-                        {
-                            ID = rd.GetInt32(0),
-                            Name = rd.GetString(1)
-                        };
                     }
                 }
             }

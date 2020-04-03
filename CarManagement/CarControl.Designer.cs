@@ -1,6 +1,6 @@
 ﻿namespace CarManagement
 {
-    partial class carControl
+    partial class CarControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -188,7 +188,7 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // carControl
+            // CarControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,7 +207,7 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvCars);
-            this.Name = "carControl";
+            this.Name = "CarControl";
             this.Size = new System.Drawing.Size(895, 492);
             this.Load += new System.EventHandler(this.CarControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
