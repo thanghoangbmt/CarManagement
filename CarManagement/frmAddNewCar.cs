@@ -194,10 +194,6 @@ namespace CarManagement
                 return;
             }
 
-            //int Price = -1;
-            //int ProducedYear = -1;
-            //int Engine = -1;
-            //int Quantity = -1;
             if (Price <= 0)
             {
                 MessageBox.Show("Price must be greater than 0!");
@@ -248,6 +244,11 @@ namespace CarManagement
                 MessageBox.Show("Add new car failed!");
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
