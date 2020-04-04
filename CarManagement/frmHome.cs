@@ -60,10 +60,9 @@ namespace CarManagement
 
         private void btnCar_Click(object sender, EventArgs e)
         {
-            manufacturerControl1.Hide();
-
             carControl1.Show();
             carControl1.loadData();
+            carControl1.BringToFront();
             
             carControl1.BringToFront();
             pnSide.Height = btnCar.Height;
@@ -75,16 +74,17 @@ namespace CarManagement
             categoryControl.Show();
             categoryControl.LoadData();
             categoryControl.BringToFront();
+
             pnSide.Height = btnCategory.Height;
             pnSide.Top = btnCategory.Top;
         }
 
         private void btnManufacturer_Click(object sender, EventArgs e)
         {
-            carControl1.Hide();
-
+            
             manufacturerControl1.Show();
             manufacturerControl1.loadData();
+            manufacturerControl1.BringToFront();
 
             pnSide.Height = btnManufacturer.Height;
             pnSide.Top = btnManufacturer.Top;

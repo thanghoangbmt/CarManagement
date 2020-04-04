@@ -39,6 +39,7 @@
             // 
             this.dgvInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInvoice.Location = new System.Drawing.Point(180, 49);
+            this.dgvInvoice.MultiSelect = false;
             this.dgvInvoice.Name = "dgvInvoice";
             this.dgvInvoice.ReadOnly = true;
             this.dgvInvoice.Size = new System.Drawing.Size(554, 359);
@@ -91,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.btnAdd);

@@ -80,5 +80,42 @@ namespace DataSource.daos
             }
             return totalPrice;
         }
+
+        public bool CreateInvoiceDetails(CarDTO carDTO, int invoiceID, int quantity)
+        {
+            bool result = false;
+            string SQL = "INSERT INTO Invoice_Details(Car_ID, Invoice_ID, Unit_Price, Quantity) " +
+                "VALUES(@Car_ID, @Invoice_ID, @Unit_Price, @Quantity)";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Car_ID", carDTO.ID);
+            cmd.Parameters.AddWithValue("@Invoice_ID", invoiceID);
+            cmd.Parameters.AddWithValue("@Unit_Price", carDTO.Price);
+            cmd.Parameters.AddWithValue("@Quantity", quantity);
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                    cnn.Open();
+                result = cmd.ExecuteNonQuery() > 0;
+                if (result)
+                {
+                    CarDAO carDAO = new CarDAO();
+                    result = carDAO.UpdateQuantity(carDTO, quantity);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
+        }
     }
 }

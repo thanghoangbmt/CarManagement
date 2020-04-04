@@ -88,6 +88,36 @@ namespace DataSource.daos
             }
             return total;
         }
+
+        public int CreateNewInvoice(int cusID)
+        {
+            int result = -1;
+            string SQL = "INSERT INTO Invoices(Date_Of_Purcharse, Customer_ID) VALUES(@Date_Of_Purcharse, @Customer_ID); " +
+                "SELECT SCOPE_IDENTITY()";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Date_Of_Purcharse", System.DateTime.Now);
+            cmd.Parameters.AddWithValue("@Customer_ID", cusID);
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                    cnn.Open();
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
+        }
     }
     
 }

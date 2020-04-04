@@ -77,5 +77,71 @@ namespace DataSource.daos
             }
             return name;
         }
+
+        public CustomerDTO FindByPhone(string phone)
+        {
+            CustomerDTO result = null;
+            string SQL = "SELECT ID, Fullname, Email FROM Customers WHERE Phone = @Phone";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Phone", phone);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    if (rd.HasRows)
+                    {
+                        if (rd.Read())
+                        {
+                            result = new CustomerDTO
+                            {
+                                ID = rd.GetInt32(0),
+                                Fullname = rd.GetString(1),
+                                Email = rd.GetString(2),
+                                Phone = phone
+                            };
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public int CreateCustomer(CustomerDTO cusDTO)
+        {
+            int result = -1;
+            string SQL = "INSERT INTO Customers(Fullname, Phone, Email) VALUES(@Fullname, @Phone, @Email); " +
+                "SELECT SCOPE_IDENTITY()";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Fullname", cusDTO.Fullname);
+            cmd.Parameters.AddWithValue("@Phone", cusDTO.Phone);
+            cmd.Parameters.AddWithValue("@Email", cusDTO.Email);
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                    cnn.Open();
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+            return result;
+        }
     }
 }

@@ -54,7 +54,132 @@ namespace DataSource.daos
 
                         list.Add(carDTO);
                     }
-                    
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return list;
+        }
+
+        public CarDTO GetCarDetailsByModelName(string model)
+        {
+            CarDTO result = null;
+            string SQL = "SELECT ID, Price, Produced_Year, Engine, Tranmission_ID, Type_ID, " +
+                "Category_ID, Fuel_ID FROM Cars";
+            if (!string.IsNullOrEmpty(model))
+            {
+                SQL = SQL + " WHERE Model_Name = @Model_Name";
+            }
+            else
+            {
+                return null;
+            }
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            if (!string.IsNullOrEmpty(model))
+            {
+                cmd.Parameters.AddWithValue("@Model_Name", model);
+            }
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    Car_TranmissionDAO car_TranmissionDAO = new Car_TranmissionDAO();
+                    Car_TypeDAO car_TypeDAO = new Car_TypeDAO();
+                    Car_CategoryDAO car_CategoryDAO = new Car_CategoryDAO();
+                    Car_FuelsDAO car_FuelsDAO = new Car_FuelsDAO();
+                    Car_StatusDAO car_StatusDAO = new Car_StatusDAO();
+                    if (rd.Read())
+                    {
+                        result = new CarDTO
+                        {
+                            ID = rd.GetInt32(0),
+                            Price = rd.GetDouble(1),
+                            Produced_Year = rd.GetInt32(2),
+                            Engine = rd.GetInt32(3),
+                            Tranmission_Description = car_TranmissionDAO.GetTranmissionDescriptionByID(rd.GetInt32(4)),
+                            Type_Description = car_TypeDAO.GetTypeDescriptionByID(rd.GetInt32(5)),
+                            Category_Description = car_CategoryDAO.GetCategoryDescriptionByID(rd.GetInt32(6)),
+                            Fuel_Description = car_FuelsDAO.GetFuelDescriptionByID(rd.GetInt32(7))
+                        };
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
+        public bool UpdateQuantity(CarDTO dto, int quantity)
+        {
+            bool result = false;
+            string SQL = "UPDATE Cars SET Quantity = Quantity - @Quantity " +
+                "WHERE ID = @ID";
+
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@Quantity", quantity);
+            cmd.Parameters.AddWithValue("@ID", dto.ID);
+
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                    cnn.Open();
+                result = cmd.ExecuteNonQuery() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public List<CarDTO> GetListCarModelByManufacturer(string manu)
+        {
+            List<CarDTO> list = null;
+            string SQL = "SELECT Model_Name FROM Cars";
+            if (!manu.Equals("All"))
+            {
+                Car_ManufacturerDAO car_ManufacturerDAO = new Car_ManufacturerDAO();
+                int manuID = car_ManufacturerDAO.GetManufacturerIDByName(manu);
+                SQL = SQL + " WHERE Manufacturer_ID = " + manuID;
+            }
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (rd.Read())
+                    {
+                        if (list == null)
+                            list = new List<CarDTO>();
+                        CarDTO carDTO = new CarDTO
+                        {
+                            Model_Name = rd.GetString(0)
+                        };
+
+                        list.Add(carDTO);
+                    }
                 }
             }
             catch (SqlException ex)
@@ -123,6 +248,33 @@ namespace DataSource.daos
             return result;
         }
 
+        public int GetNumberAvailableCarByID(int ID)
+        {
+            int result = 0;
+            string SQL = "SELECT Quantity FROM Cars WHERE ID = @ID ";
+            SqlConnection cnn = DBUtils.GetConnection();
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@ID", ID);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                    SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    if (rd.Read())
+                    {
+                        result = rd.GetInt32(0);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+
         public bool CheckUsingManufacturer(int manuID)
         {
             bool result = false;
@@ -157,7 +309,7 @@ namespace DataSource.daos
                 "Engine = @Engine, Quantity = @Quantity, Manufacturer_ID = @Manufacturer_ID, Tranmission_ID = @Tranmission_ID, " +
                 "Type_ID = @Type_ID, Category_ID = @Category_ID, Fuel_ID = @Fuel_ID, Status_ID = @Status_ID " +
                 "WHERE ID = @ID";
-   
+
             SqlConnection cnn = DBUtils.GetConnection();
             SqlCommand cmd = new SqlCommand(SQL, cnn);
             cmd.Parameters.AddWithValue("@Model_Name", carDTO.Model_Name);
@@ -240,7 +392,8 @@ namespace DataSource.daos
                 if (!SQL.Contains("WHERE "))
                 {
                     SQL = SQL + " WHERE Category_ID = " + cateID;
-                } else
+                }
+                else
                 {
                     SQL = SQL + " AND Category_ID = " + cateID;
                 }
@@ -304,7 +457,7 @@ namespace DataSource.daos
                 {
                     cnn.Open();
                     SqlDataReader rd = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    
+
                     while (rd.Read())
                     {
                         if (list == null)

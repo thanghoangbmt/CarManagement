@@ -46,7 +46,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.customerControl = new CarManagement.CustomerControl();
             this.categoryControl = new CarManagement.CategoryControl();
-            this.carControl1 = new CarManagement.CarControl();
+            //this.carControl1 = new CarManagement.CarControl();
             this.carControl1 = new CarManagement.carControl();
             this.manufacturerControl1 = new CarManagement.manufacturerControl();
             this.invoiceControl = new CarManagement.InvoiceControl();
@@ -334,7 +334,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Panel pnSide;
-        private CarControl carControl1;
+        //private CarControl carControl1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private CategoryControl categoryControl;
         private CustomerControl customerControl;

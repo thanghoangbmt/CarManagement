@@ -80,6 +80,12 @@
     <Compile Include="frmAddNewCar.Designer.cs">
       <DependentUpon>frmAddNewCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddNewInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewInvoice.Designer.cs">
+      <DependentUpon>frmAddNewInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddNewManufacturer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewCar.resx">
       <DependentUpon>frmAddNewCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddNewInvoice.resx">
+      <DependentUpon>frmAddNewInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewManufacturer.resx">
       <DependentUpon>frmAddNewManufacturer.cs</DependentUpon>

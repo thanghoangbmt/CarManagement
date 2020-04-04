@@ -33,7 +33,12 @@ namespace CarManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            frmAddNewInvoice frm = new frmAddNewInvoice();
+            DialogResult result = frm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadData();
+            }
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
