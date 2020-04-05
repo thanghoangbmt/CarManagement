@@ -38,18 +38,17 @@
             this.btnCategory = new System.Windows.Forms.Button();
             this.btnCar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.invoiceControl = new CarManagement.InvoiceControl();
             this.customerControl = new CarManagement.CustomerControl();
             this.categoryControl = new CarManagement.CategoryControl();
-            //this.carControl1 = new CarManagement.CarControl();
-            this.carControl1 = new CarManagement.carControl();
             this.manufacturerControl1 = new CarManagement.manufacturerControl();
-            this.invoiceControl = new CarManagement.InvoiceControl();
+            this.carControl1 = new CarManagement.carControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -180,7 +179,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.btnMinimize);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(179, 0);
@@ -188,19 +187,20 @@
             this.panel2.Size = new System.Drawing.Size(895, 27);
             this.panel2.TabIndex = 1;
             // 
-            // button6
+            // btnMinimize
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(828, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(30, 27);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "_";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.ForeColor = System.Drawing.Color.White;
+            this.btnMinimize.Location = new System.Drawing.Point(828, 0);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(30, 27);
+            this.btnMinimize.TabIndex = 3;
+            this.btnMinimize.Text = "_";
+            this.btnMinimize.UseVisualStyleBackColor = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // btnExit
             // 
@@ -248,6 +248,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // invoiceControl
+            // 
+            this.invoiceControl.BackColor = System.Drawing.Color.White;
+            this.invoiceControl.Location = new System.Drawing.Point(179, 153);
+            this.invoiceControl.Name = "invoiceControl";
+            this.invoiceControl.Size = new System.Drawing.Size(895, 492);
+            this.invoiceControl.TabIndex = 6;
+            // 
             // customerControl
             // 
             this.customerControl.BackColor = System.Drawing.Color.White;
@@ -264,22 +272,6 @@
             this.categoryControl.Size = new System.Drawing.Size(895, 492);
             this.categoryControl.TabIndex = 4;
             // 
-            // carControl1
-            // 
-            this.carControl1.BackColor = System.Drawing.Color.White;
-            this.carControl1.Location = new System.Drawing.Point(179, 154);
-            this.carControl1.Name = "carControl1";
-            this.carControl1.Size = new System.Drawing.Size(895, 492);
-            this.carControl1.TabIndex = 3;
-            // 
-            // invoiceControl
-            // 
-            this.invoiceControl.BackColor = System.Drawing.Color.White;
-            this.invoiceControl.Location = new System.Drawing.Point(179, 153);
-            this.invoiceControl.Name = "invoiceControl";
-            this.invoiceControl.Size = new System.Drawing.Size(895, 492);
-            this.invoiceControl.TabIndex = 6;
-            // 
             // manufacturerControl1
             // 
             this.manufacturerControl1.BackColor = System.Drawing.Color.White;
@@ -287,6 +279,14 @@
             this.manufacturerControl1.Name = "manufacturerControl1";
             this.manufacturerControl1.Size = new System.Drawing.Size(895, 492);
             this.manufacturerControl1.TabIndex = 4;
+            // 
+            // carControl1
+            // 
+            this.carControl1.BackColor = System.Drawing.Color.White;
+            this.carControl1.Location = new System.Drawing.Point(179, 154);
+            this.carControl1.Name = "carControl1";
+            this.carControl1.Size = new System.Drawing.Size(895, 492);
+            this.carControl1.TabIndex = 3;
             // 
             // frmHome
             // 
@@ -331,7 +331,7 @@
         private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Panel pnSide;
         //private CarControl carControl1;
